@@ -49,3 +49,11 @@ How to install
 
         source ~/.zshrc
 
+
+### With antigen
+
+* Having [antigen](http://github.com/zsh-users/antigen) properly installed, just run:
+
+        antigen gmatheu/zsh-explain-shell
+
+
