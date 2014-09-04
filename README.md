@@ -15,5 +15,5 @@ Current Plugins
 
     * explain-shell: To open commans on explainshell.com
     * dirrc: Execute custom file (.dirrc) when entering a directory
-    <!-- * docker: Docker aliases and functions -->
+    * docker: Docker aliases and functions
     <!-- * notify: OSD Notifier functions -->
