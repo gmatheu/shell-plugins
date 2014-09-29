@@ -9,3 +9,8 @@ alias gloc='git log --left-right --graph --cherry-pick --oneline'
 compdef _git gloc=git-log
 alias gap='git add -p'
 compdef _git gap=git-add
+function _git_recent_branches() {
+  git for-each-ref --sort=-committerdate --count=5 --format='%(refname:short)' refs/heads/
+}
+alias grb='_git_recent_branches'
+
