@@ -1,6 +1,6 @@
 #! /usr/bin/zsh
 
-function _svn_fomatted_log(){
+function _svn_formatted_log(){
   local limit="10"
   svn log --limit $limit |\
     perl -pe 's/\n/| /g => s/^-.*/\n/g' |\
