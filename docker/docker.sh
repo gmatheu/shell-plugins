@@ -20,7 +20,8 @@ then
   alias dshs=docker-bash-share
 fi
 
-if (which fig > /dev/null)
+if (which docker-compose > /dev/null)
 then
-  alias fig='sudo fig'
+  alias docker-compose='sudo docker-compose'
+  alias dcp=docker-compose
 fi
