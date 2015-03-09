@@ -12,7 +12,9 @@ then
 
   alias docker='sudo docker'
   alias docker-ip='sudo docker inspect --format "{{ .NetworkSettings.IPAddress }}" $1'
+  alias dip=docker-ip
   alias docker-pid='sudo docker inspect --format "{{ .State.Pid }}" $1'
+  alias dpid=docker-pid
   alias docker-enter='sudo nsenter --target `docker-pid $1` -muinpw /bin/bash'
   alias dsh=docker-bash
   alias dshs=docker-bash-share
