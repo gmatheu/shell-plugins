@@ -1,4 +1,4 @@
-zsh-plugins
+zsh-plugins[![Build Status](https://travis-ci.org/gmatheu/shell-plugins.svg)](https://travis-ci.org/gmatheu/shell-plugins)
 =======================
 
 How to install
