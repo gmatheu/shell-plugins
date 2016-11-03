@@ -24,8 +24,8 @@ EOF
   fi
 }
 
-decrypt_profile_secrets (){
-  _verify_gpg_id_env_var
+profile-secrets-decrypt (){
+  _verify_gpg_id_env_var || return 1
   if [ -f $ENCRYPTED_SECRETS_FILE ]
   then
     gpg -d ${ENCRYPTED_SECRETS_FILE} > ${SECRETS_FILE}
@@ -36,8 +36,8 @@ decrypt_profile_secrets (){
   fi
 }
 
-encrypt_profile_secrets () {
-  _verify_gpg_id_env_var
+profile-secrets-encrypt () {
+  _verify_gpg_id_env_var || return 1
 
   if [ -f $SECRETS_FILE ]
   then
@@ -48,8 +48,8 @@ encrypt_profile_secrets () {
   fi
 }
 
-source_profile_secrets() {
-  profile_decrypt
+profile-secrets-source() {
+  profile-secrets-decrypt || return 1
   source $SECRETS_FILE
-  profile_encrypt
+  profile-secrets-encrypt
 }
