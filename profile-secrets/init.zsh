@@ -53,3 +53,9 @@ profile-secrets-source() {
   source $SECRETS_FILE
   profile-secrets-encrypt
 }
+
+profile-secrets-edit() {
+  profile-secrets-decrypt
+  vim $SECRETS_FILE
+  profile-secrets-encrypt
+}
