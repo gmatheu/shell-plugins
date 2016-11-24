@@ -6,6 +6,10 @@ function start-me-update(){
 	echo "Updating start-me-up..."
 	cd $STU_HOME; sh bootstrap.sh
 }
+function start-me-up(){
+  echo "Loading start-me-up functions"
+  source $STU_HOME/shell-plugin/init.sh
+}
 function stu-vagrant(){
   VAGRANT_CWD=$STU_HOME vagrant $@
 }
