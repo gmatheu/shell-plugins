@@ -7,4 +7,7 @@ function install-vim-plugins(){
 function update-vim-plugins(){
   vim "+mkspell ~/.vim/spell/custom.en.utf-8.add" +PluginUpdate +qall
 }
+function edit-vim-plugins(){
+  vim ~/.vim/plugins.txt
+}
 
