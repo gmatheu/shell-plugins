@@ -16,3 +16,7 @@ function _git_recent_branches() {
 }
 alias grb='_git_recent_branches'
 
+function _git_commit_with_branch_message() {
+  gc -m"$(git rev-parse --abbrev-ref HEAD | cut -d '_' -f 1): $1" $2
+}
+alias gcbm='_git_commit_with_branch_message'
