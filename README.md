@@ -13,23 +13,30 @@ How to install
 Current Plugins
 ---------------
 
+### fzf
+
+Installs [fzf](https://github.com/junegunn/fzf) (command line fuzzy finder) and provides some functions using it.
+
+#### Functions
+  * cli-launcher: Allows you to select and launch desktop applications (using [Freedesktop's Destkop Entry](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html) format.)
+
 ### profile-secrets
 
 It allows you to securely keep sensitive variables (api tokens, passwords, etc) as part of your terminal init files. Using [gpg](https://gnupg.org/) to encrypt/decrypt the file with your secrets.
 
 #### Usage
-  * Define *GPG_ID* with [gpg](https://gnupg.org/) to encrypt data: 
-  
+  * Define *GPG_ID* with [gpg](https://gnupg.org/) to encrypt data:
+
         export GPG_ID=my_gpg_id@gpg.org
   * Create secrets file (by default _~/.profile-secrets/secrets.sh_) is where sensitive data is stored. Calling _profile-secrets-encrypt_ will create it. E.g:
-  
+
         export GITHUB_TOKEN=123
         export AWS_TOKEN=abc
   * Encrypt secrets file. It will ask for gpg keys password if required:
-  
+
         profile-secrets-encrypt
   * Add secrets variables to current session:
-  
+
         profile-secrets-source
 
 ##### Encrypt
