@@ -1,3 +1,5 @@
+#! /bin/bash
+
 function fzf() {
   unset -f fzf
   [ ! -d ~/.fzf ] \
@@ -9,7 +11,7 @@ function fzf() {
   fzf
 }
 function cli-launcher() {
-  application=$(find /usr/share/applications -name '*.desktop' -printf "%f\n" | cut -d '.' -f 1 | fzf)
+  application=$(echo $(find /usr/share/applications -name '*.desktop' -printf "%f\\\\n") $(find ~/.local/share/applications -name '*.desktop' -printf "%f\\\\n") | sed -e 's/.desktop//g' | sort | uniq | fzf)
   gtk-launch $application 2>&1 > /dev/null & disown
 }
 alias launcher=cli-launcher
