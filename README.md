@@ -18,7 +18,17 @@ Current Plugins
 Installs [fzf](https://github.com/junegunn/fzf) (command line fuzzy finder) and provides some functions using it.
 
 #### Functions
-  * cli-launcher: Allows you to select and launch desktop applications (using [Freedesktop's Destkop Entry](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html) format.)
+  * **cli-launcher**: Allows you to select and launch desktop applications (using [Freedesktop's Destkop Entry](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html) format.)
+
+### git
+
+Git 
+
+#### Functions
+  * **git_remote_to_https**: Switches git remote url from ssh to https
+  * **git_remote_to_ssh**: Switches git remote url from https to ssh
+  * **git_switch_remote** or alias **grs**: Toggles git remote url from https to ssh and backwards
+
 
 ### profile-secrets
 
@@ -42,9 +52,9 @@ It allows you to securely keep sensitive variables (api tokens, passwords, etc) 
 ##### Encrypt
 
 #### Functions
-  * profile-secrets-decrypt: Decrypts secret file.
-  * profile-secrets-encrypt: Encrypts secret file. First time it is called will create secrets file
-  * profile-secrets-source: Decrypts secrets file, source it and encrypts it back.
+  * **profile-secrets-decrypt**: Decrypts secret file.
+  * **profile-secrets-encrypt**: Encrypts secret file. First time it is called will create secrets file
+  * **profile-secrets-source**: Decrypts secrets file, source it and encrypts it back.
 
 ### Other Plugins
   * explain-shell: To open commans on explainshell.com
