@@ -11,7 +11,10 @@ function fzf() {
   fzf
 }
 function cli-launcher() {
-  application=$(echo $(find /usr/share/applications -name '*.desktop' -printf "%f\\\\n") $(find ~/.local/share/applications -name '*.desktop' -printf "%f\\\\n") | sed -e 's/.desktop//g' | sort | uniq | fzf)
+  application=$(echo $(find /usr/share/applications -name '*.desktop' -printf "%f\\\\n") \
+                  $(find  /var/lib/snapd/desktop/applications -name '*.desktop' -printf "%f\\\\n") \
+                  $(find ~/.local/share/applications -name '*.desktop' -printf "%f\\\\n") | \
+              sed -e 's/.desktop//g' | sort | uniq | fzf)
   gtk-launch $application 2>&1 > /dev/null & disown
 }
 alias launcher=cli-launcher
