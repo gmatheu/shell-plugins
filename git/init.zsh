@@ -24,3 +24,38 @@ function _git_commit_with_branch_message() {
   git commit -m"$(git rev-parse --abbrev-ref HEAD | cut -d '_' -f 1): $1" $2
 }
 alias gcbm='_git_commit_with_branch_message'
+
+
+function _git_show_remote() {
+  remote=$1
+  echo "New remote url for ${remote} is: $(git remote get-url ${remote})"
+}
+
+# Switches git remote url from ssh to https
+# Parameters
+# $1 remote name. origin by default
+function git_remote_to_https(){
+  remote=${1:-origin}
+  git remote set-url ${remote} $(git remote get-url ${remote} | sed 's#:#/#; s#git@#https://#')
+  _git_show_remote ${remote}
+}
+
+# Switches git remote url from https to ssh
+# Parameters
+# $1 remote name. origin by default
+function git_remote_to_ssh(){
+  remote=${1:-origin}
+  git remote set-url ${remote} $(git remote get-url ${remote} | sed 's#https://\(.*\)/\([^/].*\)/#git@\1:\2/#')
+  _git_show_remote ${remote}
+}
+
+# Toggles git remote url from https to ssh and backwards
+# Parameters
+# $1 remote name. origin by default
+function git_switch_remote(){
+  remote=${1:-origin}
+  git remote get-url ${remote} | grep -q 'https' \
+    && git_remote_to_ssh ${remote} \
+    || git_remote_to_https ${remote}
+}
+alias grs=git_switch_remote
