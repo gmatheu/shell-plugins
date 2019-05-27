@@ -75,3 +75,20 @@ else
     unset -f install-pyenv
   }
 fi
+
+export GVM_DIR="${HOME}/.gvm"
+if [[ -s "${GVM_DIR}/scripts/gvm" ]]
+then
+  function gvm {
+    echo "Lazy loading gvm..."
+    unset -f gvm
+    source "${GVM_DIR}/scripts/gvm"
+    gvm $@
+  }
+else
+  function install-gvm() {
+    echo "Installing gvm"
+    bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+    unset -f install-gvm
+  }
+fi
