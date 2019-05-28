@@ -57,6 +57,7 @@ It allows you to securely keep sensitive variables (api tokens, passwords, etc) 
   * **profile-secrets-source**: Decrypts secrets file, source it and encrypts it back.
 
 ### Other Plugins
+  * password-store: Aliases and function to work with [pass](https://www.passwordstore.org/) (including fzf integration)
   * version-managers: Lazy loading and installation of several version managers (rvm, nvm, pyenv, sdkman!)
   * explain-shell: To open commans on explainshell.com
   * dirrc: Execute custom file (.dirrc) when entering a directory
