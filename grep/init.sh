@@ -19,5 +19,3 @@ alias ga="grep-aliases"
 alias rrg="grep-rails-routes"
 alias rt="rake -T"
 alias psg="ps aux | grep $@"
-alias ack="ack-grep"
-
