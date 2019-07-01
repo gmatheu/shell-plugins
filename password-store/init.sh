@@ -14,5 +14,9 @@ function _pass-show() {
 function _pass-show-clip() {
   _pass-show $1 '--clip'
 }
+function _pass-show-xclip() {
+  _pass-show $1 | xclip -selection clipboard
+}
 alias psc=_pass-show-clip
+alias psx=_pass-show-xclip
 alias pso=_pass-show
