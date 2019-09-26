@@ -11,6 +11,7 @@ if [ -s "$NVM_DIR/nvm.sh" ]; then
 #   }
   #Spaceship theme requires node, that's why we need to load NVM eagerly
   source "$NVM_DIR/nvm.sh"
+  . "$NVM_DIR/bash_completion"
 else
   function install-nvm() {
     echo "Installing nvm"
