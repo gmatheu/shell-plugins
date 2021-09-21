@@ -2,7 +2,7 @@
 
 if (which docker > /dev/null)
 then
-  local image=ubuntu:14.10
+  local image=ubuntu:20.04
   function docker-bash() {
     docker run --rm -it $image /bin/bash
   }
