@@ -20,9 +20,10 @@ then
   alias dpid=docker-pid
   alias dsh=docker-bash
   alias dshs=docker-bash-share
+  alias de=docker
 fi
 
 if (which docker-compose > /dev/null)
 then
-  alias dcp=docker-compose
+  alias dcp='docker-compose'
 fi
