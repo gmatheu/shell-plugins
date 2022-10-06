@@ -49,6 +49,40 @@ It allows you to securely keep sensitive variables (api tokens, passwords, etc) 
 
         profile-secrets-source
 
+
+### ssh-agent
+
+Handy tools to create, activate and manage identities in a ssh-agent (demo [![asciicast](https://asciinema.org/a/526145.svg)](https://asciinema.org/a/526145))
+
+
+### Usage
+
+  * Create and ssh-agent
+  ```
+  ssh-agent-create
+  ```
+
+  * Activate create ssh-agent
+  ```
+  ssh-agent-activate-current
+  ```
+
+  * List loaded identities (requires fzf)
+  ```
+  ssh-agent-list-identities
+  ```
+
+  * Add an indetity with fuzzy search (requires fzf)
+  ```
+  ssh-agent-add-identity
+  ```
+
+  * Add several identities with fuzzy search (requires gum)
+  ```
+  ssh-agent-add-identity
+  ```
+
+
 ##### Encrypt
 
 #### Functions
