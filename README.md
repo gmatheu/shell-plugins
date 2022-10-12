@@ -49,13 +49,23 @@ It allows you to securely keep sensitive variables (api tokens, passwords, etc) 
 
         profile-secrets-source
 
+##### Encrypt
+
+#### Functions
+  * **profile-secrets-decrypt**: Decrypts secret file.
+  * **profile-secrets-encrypt**: Encrypts secret file. First time it is called will create secrets file
+  * **profile-secrets-source**: Decrypts secrets file, source it and encrypts it back.
+
+
 
 ### ssh-agent
 
-Handy tools to create, activate and manage identities in a ssh-agent (demo [![asciicast](https://asciinema.org/a/526145.svg)](https://asciinema.org/a/526145))
+Handy tools to create, activate and manage identities in a ssh-agent
+
+[![asciicast](https://asciinema.org/a/526145.svg)](https://asciinema.org/a/526145)
 
 
-### Usage
+#### Usage
 
   * Create and ssh-agent
   ```
@@ -82,13 +92,13 @@ Handy tools to create, activate and manage identities in a ssh-agent (demo [![as
   ssh-agent-add-identity
   ```
 
+### zplug-helper
 
-##### Encrypt
+Quickly shows markdowns documentation of zplug plugins
 
-#### Functions
-  * **profile-secrets-decrypt**: Decrypts secret file.
-  * **profile-secrets-encrypt**: Encrypts secret file. First time it is called will create secrets file
-  * **profile-secrets-source**: Decrypts secrets file, source it and encrypts it back.
+[![asciicast](https://asciinema.org/a/CiSsA7bYOin7ju0Bp21mRjKy1.svg)](https://asciinema.org/a/CiSsA7bYOin7ju0Bp21mRjKy1)
+
+
 
 ### Other Plugins
   * password-store: Aliases and function to work with [pass](https://www.passwordstore.org/) (including fzf integration)
