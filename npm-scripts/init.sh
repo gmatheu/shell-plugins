@@ -8,7 +8,7 @@ function npm-run-scripts-find {
   echo $(_npm-scripts-inline | fzf | cut -d '|' -f 1 )
 }
 function npm-run-scripts { 
-  script=$(_npm-run-scripts-find)
+  script=$(npm-run-scripts-find)
   echo "Executing -> ${script}"
   npx run ${script}
 }
