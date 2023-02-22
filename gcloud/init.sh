@@ -8,7 +8,6 @@ command -v gcloud > /dev/null 2>&1 && {
     gcloud sql instances list | tac | fzf | tr -s ' ' | cut -d ' ' -f 1 | xargs -I{} gcloud sql connect {}
   }
 
-
   _make_cache() {
     CACHE_FILE=$1
     CMD=$2
