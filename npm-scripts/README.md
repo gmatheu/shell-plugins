@@ -1,26 +1,20 @@
-
  # npm scripts plugin
 
-Helper functions to fastly search and execute npm scripts
+ Helper functions to fastly search and execute npm scripts
 
  Requires: fzf to provide fuzzy search
 
 
 ## Functions
 
-### npm-run-scripts
+### npm-run-scripts-find  
+   Find script and execute selected script
 
-Find script and execute selected script
+### npm-run-scripts  
+   Find and show script name
 
-
-### npm-run-scripts-find
-
-Find and show script name
-
-
-### npm-run-scripts-show
-
-Find script and show its content
+### npm-run-scripts-show  
+   Find script and show its content
 
 
 ## Aliases
