@@ -5,7 +5,7 @@
 ##
 ## Requires: fzf to provide fuzzy search
 
-_npm-scripts-inline { 
+_npm-scripts-inline () { 
   stat package.json &> /dev/null || { echo "package.json not found" }
   npx json -f package.json scripts |\
     npx json -e 'this.lines = Object.keys(this).map(l => { return `${l}|${this[l]}`})' lines |\
