@@ -13,14 +13,15 @@ _npm-scripts-inline () {
 }
 
 npm-run-scripts-find () { 
-  ### Find script and execute selected script
+  ### Find and show script name
   echo $(_npm-scripts-inline | fzf) | cut -d '|' -f 1
 }
 
 npm-run-scripts () { 
-  ### Find and show script name
+  ### Find script and execute selected script
   script=$(npm-run-scripts-find)
   echo "Executing -> ${script}"
+  print -s "npm run ${script}"
   npm run ${script}
 }
 
