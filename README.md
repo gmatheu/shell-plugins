@@ -19,7 +19,7 @@ Current Plugins
 Helper functions to fastly search and execute npm scripts
 ndy tools to create, activate and manage identities in a ssh-agent
 
-[![asciicast](https://asciinema.org/a/MDW06aU1iX1EQAVb8nbKDzB6x.svg)](https://asciinema.org/a/MDW06aU1iX1EQAVb8nbKDzB6x)
+[![asciicast](https://asciinema.org/a/565447.svg)](https://asciinema.org/a/565447)
 
 
 #### Usage
