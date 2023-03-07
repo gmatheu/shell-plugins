@@ -13,6 +13,28 @@ How to install
 Current Plugins
 ---------------
 
+
+### npm-scripts
+
+Helper functions to fastly search and execute npm scripts
+ndy tools to create, activate and manage identities in a ssh-agent
+
+[![asciicast](https://asciinema.org/a/MDW06aU1iX1EQAVb8nbKDzB6x.svg)](https://asciinema.org/a/MDW06aU1iX1EQAVb8nbKDzB6x)
+
+
+#### Usage
+   
+##### npm-run-scripts-find  
+   Find and show script name
+
+##### npm-run-scripts  
+   Find script and execute selected script. 
+   If a yarn.lock is detected, uses yarn instead of npm
+
+##### npm-run-scripts-show  
+   Find script and show its content
+
+
 ### fzf
 
 Installs [fzf](https://github.com/junegunn/fzf) (command line fuzzy finder) and provides some functions using it.
