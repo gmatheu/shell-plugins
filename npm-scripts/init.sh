@@ -18,11 +18,15 @@ npm-run-scripts-find () {
 }
 
 npm-run-scripts () { 
-  ### Find script and execute selected script
+  ### Find script and execute selected script. 
+  ### If a yarn.lock is detected, uses yarn instead of npm
   script=$(npm-run-scripts-find)
   echo "Executing -> ${script}"
   print -s "npm run ${script}"
-  npm run ${script}
+  cmd="npm"
+  stat yarn.lock &> /dev/null && { cmd="yarn" }
+  print -s "${cmd} run ${script}"
+  ${cmd} run ${script}
 }
 
 npm-run-scripts-show () { 
@@ -33,3 +37,6 @@ npm-run-scripts-show () {
 alias npms=npm-run-scripts
 alias npmss=npm-run-scripts-show
 alias npmsf=npm-run-scripts-find
+alias yarns=npm-run-scripts
+alias yarnss=npm-run-scripts-show
+alias yarnsf=npm-run-scripts-find

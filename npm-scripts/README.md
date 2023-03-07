@@ -8,10 +8,11 @@
 ## Functions
 
 ### npm-run-scripts-find  
-   Find script and execute selected script
+   Find and show script name
 
 ### npm-run-scripts  
-   Find and show script name
+   Find script and execute selected script. 
+   If a yarn.lock is detected, uses yarn instead of npm
 
 ### npm-run-scripts-show  
    Find script and show its content
@@ -22,3 +23,6 @@
 * *npms*: npm-run-scripts
 * *npmss*: npm-run-scripts-show
 * *npmsf*: npm-run-scripts-find
+* *yarns*: npm-run-scripts
+* *yarnss*: npm-run-scripts-show
+* *yarnsf*: npm-run-scripts-find
