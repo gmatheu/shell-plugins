@@ -17,5 +17,11 @@ $(find ~/.local/share/applications -name '*.desktop' -printf "%f\\\\n") | \
               sed -e 's/.desktop//g' | sort | uniq | fzf)
   gtk-launch $application 2>&1 > /dev/null & disown
 }
+function edit-fzf() {
+  selected=$(fzf)
+  print -s "$EDITOR ${selected}"
+  $EDITOR ${selected}
+}
+alias ez=edit-fzf
 alias launcher=cli-launcher
 alias cl=cli-launcher
