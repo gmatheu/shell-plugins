@@ -2,7 +2,9 @@
 
  Helper functions to work with fzf
 
- Instals fzf if is not available
+ Installs fzf if is not available
+ 
+ Requires: rg (ripgrep) 
 
 
 ## Functions
@@ -16,9 +18,13 @@
 ### edit-fzf 
    Shows fzf and opens selected file with default editor
 
+### grep-fzf 
+   Search content, fuzzy search and opens selected file with default editor
+
 
 ## Aliases
 
 * *ez*: edit-fzf
+* *eg*: grep-fzf
 * *launcher*: cli-launcher
 * *cl*: cli-launcher
