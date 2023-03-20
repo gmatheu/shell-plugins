@@ -21,9 +21,13 @@
 ### grep-fzf 
    Search content, fuzzy search and opens selected file with default editor
 
+### cd-z 
+   Finds z registered directories and changes directory. 
+
 
 ## Aliases
 
+* *zz*: cd-z
 * *ez*: edit-fzf
 * *eg*: grep-fzf
 * *launcher*: cli-launcher

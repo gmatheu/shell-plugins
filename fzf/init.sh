@@ -41,7 +41,15 @@ grep-fzf () {
   print -s "$EDITOR ${filename}"
   $EDITOR ${filename}
 }
+cd-z () {
+  ### Finds z registered directories and changes directory. 
+  selected=$(z | fzf)
+  directory=$(echo $selected | tr -s ' ' | cut -d ' ' -f 2)
+  print -s "cd ${directory}"
+  builtin cd ${directory}
+}
 
+alias zz=cd-z
 alias ez=edit-fzf
 alias eg=grep-fzf
 alias launcher=cli-launcher
