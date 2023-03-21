@@ -21,12 +21,24 @@
 ### grep-fzf 
    Search content, fuzzy search and opens selected file with default editor
 
+### open-fzf 
+   Open files with default app selected file
+  
+   Argumetns: base-directory
+
+### open-dir-fzf 
+   Open directories with default file browser
+  
+   Argumetns: base-directory
+
 ### cd-z 
-   Finds z registered directories and changes directory. 
+   Finds zoxide or z registered directories and changes directory. 
 
 
 ## Aliases
 
+* *zo*: open-fzf
+* *zd*: open-dir-fzf
 * *zz*: cd-z
 * *ez*: edit-fzf
 * *eg*: grep-fzf

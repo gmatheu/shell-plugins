@@ -41,14 +41,37 @@ grep-fzf () {
   print -s "$EDITOR ${filename}"
   $EDITOR ${filename}
 }
+open-fzf () {
+  ### Open files with default app selected file
+  ###
+  ### Argumetns: base-directory
+  selected=$(find $1 -type f -print | fzf)
+  print -s "xdg-open ${selected}"
+  xdg-open ${selected}
+}
+open-dir-fzf () {
+  ### Open directories with default file browser
+  ###
+  ### Argumetns: base-directory
+  selected=$(find $1 -type d -print | fzf)
+  print -s "xdg-open ${selected}"
+  xdg-open ${selected}
+}
 cd-z () {
-  ### Finds z registered directories and changes directory. 
-  selected=$(z | fzf)
-  directory=$(echo $selected | tr -s ' ' | cut -d ' ' -f 2)
+  ### Finds zoxide or z registered directories and changes directory. 
+  which zoxide &> /dev/null && {
+    selected=$(zoxide query -l | fzf)
+    directory=$(echo $selected | tr -s ' ' | cut -d ' ' -f 2)
+  } || {
+    selected=$(z | fzf)
+    directory=$(echo $selected | tr -s ' ' | cut -d ' ' -f 2)
+  }
   print -s "cd ${directory}"
   builtin cd ${directory}
 }
 
+alias zo=open-fzf
+alias zd=open-dir-fzf
 alias zz=cd-z
 alias ez=edit-fzf
 alias eg=grep-fzf
