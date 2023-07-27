@@ -1,8 +1,9 @@
-# # zplug-helper plugin
+# # password-store plugin
 
  Provides for pass (password) password manager
 
  Requires: 
+    * pass (password-store) with passwords 
     * fzf to provide fuzzy search
     * xclip to clipboard management
 
@@ -16,6 +17,4 @@
 ## Aliases
 
 * *pss*: pass-search
-* *psc*: _pass-show-clip
-* *psx*: _pass-show-xclip
-* *pso*: _pass-show
+* *psc*: pass-search
