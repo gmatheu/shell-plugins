@@ -40,6 +40,12 @@ tmux_execute_inactive_pane () {
   tmux send-keys -t $(tmux list-panes -f '#{?pane_active,0,1}' -F '#{pane_id}') "${cmd}" Enter
 }
 
+tmux_repeat_inactive_pane () {
+  ### Executes last command from history in a non-active pane
+  ### 
+  tmux_execute_inactive_pane '!!'
+}
+
 tmux_execute_inactive_pane_interactive () {
   ### Executes command from interactive input into a non-active pane of the same window
   echo -n "Command: ";
@@ -58,5 +64,6 @@ alias txc='tmux show-buffer | xc' #Put Tmux buffer in the clipboard
 alias txps=tmux_pstree
 alias txr=tmux_execute_alt_pane 
 alias txri=tmux_execute_inactive_pane_interactive 
-alias txr=tmux_execute_inactive_pane
+alias txr=tmux_repeat_inactive_pane
+alias txe=tmux_execute_inactive_pane
 alias txrp=tmux_execute_inactive_pane_command_prompt
