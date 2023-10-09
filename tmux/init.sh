@@ -37,7 +37,8 @@ tmux_execute_inactive_pane () {
   ### Parameters:
   ###  * 1: command to execute
   cmd="$*"
-  tmux send-keys -t $(tmux list-panes -f '#{?pane_active,0,1}' -F '#{pane_id}') "${cmd}" Enter
+  target_pane=$(tmux list-panes -f '#{?pane_active,0,#{?#{==:#{pane_current_command},zsh},1,0}}' -F '#{pane_id}' | head -n 1)
+  tmux send-keys -t "${target_pane}" "${cmd}" Enter
 }
 
 tmux_repeat_inactive_pane () {
