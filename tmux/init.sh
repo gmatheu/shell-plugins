@@ -3,7 +3,12 @@
 ##
 ## Several functions to help with tmux integration
 ##
+## ## Demos
+##
+## * [tmux_popup](recordings/TmuxShellPlugin.webm)
+##
 ## Requires:
+##
 ##    * tmux (and a tmux session)
 ##    * fzf to provide fuzzy search
 

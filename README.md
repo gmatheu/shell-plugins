@@ -23,15 +23,15 @@ ndy tools to create, activate and manage identities in a ssh-agent
 
 
 #### Usage
-   
-##### npm-run-scripts-find  
+
+##### npm-run-scripts-find
    Find and show script name
 
-##### npm-run-scripts  
-   Find script and execute selected script. 
+##### npm-run-scripts
+   Find script and execute selected script.
    If a yarn.lock is detected, uses yarn instead of npm
 
-##### npm-run-scripts-show  
+##### npm-run-scripts-show
    Find script and show its content
 
 
@@ -129,4 +129,3 @@ Quickly shows markdowns documentation of zplug plugins
   * dirrc: Execute custom file (.dirrc) when entering a directory
   * docker: Docker aliases and functions
   * notify: OSD Notifier functions
-
