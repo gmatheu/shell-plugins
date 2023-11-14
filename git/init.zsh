@@ -59,3 +59,8 @@ function git_switch_remote(){
     || git_remote_to_https ${remote}
 }
 alias grs=git_switch_remote
+
+_cd_git_root() {
+  cd $(git rev-parse --show-cdup)
+}
+alias cdr=_cd_git_root
