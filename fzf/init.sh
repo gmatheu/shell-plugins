@@ -4,70 +4,81 @@
 ## Helper functions to work with fzf
 ##
 ## Installs fzf if is not available
-## 
-## Requires: rg (ripgrep) 
+##
+## Requires: rg (ripgrep)
 
-fzf () {
-  ### Lazy loads fzf and installs it if not present
-  unset -f fzf
-  [ ! -d ~/.fzf ] \
-    && echo "Cloning fzf repo" \
-    && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
-    && $HOME/.fzf/install --no-update-rc
-  [ -f ~/.fzf.zsh ] \
-    && source ~/.fzf.zsh \
-    && [[ $- == *i* ]] && source "/home/gmatheu/.fzf/shell/completion.zsh" 2> /dev/null \
-    && source "/home/gmatheu/.fzf/shell/key-bindings.zsh"
-  fzf
+__load_fzf() {
+	type fzf >/dev/null && unset -f fzf
+	[ ! -d ~/.fzf ] &&
+		echo "Cloning fzf repo" &&
+		git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf &&
+		$HOME/.fzf/install --no-update-rc
+	[ -f ~/.fzf.zsh ] &&
+		source ~/.fzf.zsh &&
+		[[ $- == *i* ]] && source "${HOME}/.fzf/shell/completion.zsh" 2>/dev/null &&
+		source "${HOME}/.fzf/shell/key-bindings.zsh"
 }
-cli-launcher () {
-  ### Shows and launches gtk application
-  application=$(echo $(find /usr/share/applications -name '*.desktop' -printf "%f\\\\n")\
-$(find  /var/lib/snapd/desktop/applications -name '*.desktop' -printf "%f\\\\n")\
-$(find ~/.local/share/applications -name '*.desktop' -printf "%f\\\\n") | \
-              sed -e 's/.desktop//g' | sort | uniq | fzf)
-  gtk-launch $application 2>&1 > /dev/null & disown
+
+fzf() {
+	### Lazy loads fzf and installs it if not present
+	__load_fzf
+	fzf
 }
-edit-fzf () {
-  ### Shows fzf and opens selected file with default editor
-  selected=$(fzf)
-  print -s "$EDITOR ${selected}"
-  $EDITOR ${selected}
+zi() {
+	__load_fzf
+	__zoxide_zi "$@"
 }
-grep-fzf () {
-  ### Search content, fuzzy search and opens selected file with default editor
-  selected=$(rg -L --color=never --no-heading --with-filename --line-number --column --smart-case . | fzf)
-  filename=$(echo $selected | cut -d : -f 1)
-  print -s "$EDITOR ${filename}"
-  $EDITOR ${filename}
+cli-launcher() {
+	### Shows and launches gtk application
+	application=$(echo $(find /usr/share/applications -name '*.desktop' -printf "%f\\\\n")$(find /var/lib/snapd/desktop/applications -name '*.desktop' -printf "%f\\\\n")$(find ~/.local/share/applications -name '*.desktop' -printf "%f\\\\n") |
+		sed -e 's/.desktop//g' | sort | uniq | fzf)
+	gtk-launch $application 2>&1 >/dev/null &
+	disown
 }
-open-fzf () {
-  ### Open files with default app selected file
-  ###
-  ### Argumetns: base-directory
-  selected=$(find $1 -type f -print | fzf)
-  print -s "xdg-open ${selected}"
-  xdg-open ${selected}
+edit-fzf() {
+	### Shows fzf and opens selected file with default editor
+	query=${1:-''}
+	selected=$(fzf --preview 'cat {}' -q "${query}")
+	ret=$?
+	[ ${ret} -eq 0 ] && {
+		print -s "$EDITOR ${selected}"
+		$EDITOR "${selected}"
+	}
 }
-open-dir-fzf () {
-  ### Open directories with default file browser
-  ###
-  ### Argumetns: base-directory
-  selected=$(find $1 -type d -print | fzf)
-  print -s "xdg-open ${selected}"
-  xdg-open ${selected}
+grep-fzf() {
+	### Search content, fuzzy search and opens selected file with default editor
+	selected=$(rg -L --color=never --no-heading --with-filename --line-number --column --smart-case . | fzf)
+	filename=$(echo $selected | cut -d : -f 1)
+	print -s "$EDITOR ${filename}"
+	$EDITOR ${filename}
 }
-cd-z () {
-  ### Finds zoxide or z registered directories and changes directory. 
-  which zoxide &> /dev/null && {
-    selected=$(zoxide query -l | fzf)
-    directory=$(echo $selected | tr -s ' ' | cut -d ' ' -f 2)
-  } || {
-    selected=$(z | fzf)
-    directory=$(echo $selected | tr -s ' ' | cut -d ' ' -f 2)
-  }
-  print -s "cd ${directory}"
-  builtin cd ${directory}
+open-fzf() {
+	### Open files with default app selected file
+	###
+	### Argumetns: base-directory
+	selected=$(find $1 -type f -print | fzf)
+	print -s "xdg-open ${selected}"
+	xdg-open ${selected}
+}
+open-dir-fzf() {
+	### Open directories with default file browser
+	###
+	### Argumetns: base-directory
+	selected=$(find $1 -type d -print | fzf)
+	print -s "xdg-open ${selected}"
+	xdg-open ${selected}
+}
+cd-z() {
+	### Finds zoxide or z registered directories and changes directory.
+	which zoxide &>/dev/null && {
+		selected=$(zoxide query -l | fzf)
+		directory=$(echo $selected | tr -s ' ' | cut -d ' ' -f 2)
+	} || {
+		selected=$(z | fzf)
+		directory=$(echo $selected | tr -s ' ' | cut -d ' ' -f 2)
+	}
+	print -s "cd ${directory}"
+	builtin cd ${directory}
 }
 
 alias zo=open-fzf
