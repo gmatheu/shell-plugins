@@ -8,7 +8,7 @@
 ## Requires: rg (ripgrep)
 
 __load_fzf() {
-	type fzf >/dev/null && unset -f fzf
+	type fzf >/dev/null | grep -q 'function' && unset -f fzf
 	[ ! -d ~/.fzf ] &&
 		echo "Cloning fzf repo" &&
 		git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf &&
