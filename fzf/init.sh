@@ -22,7 +22,7 @@ __load_fzf() {
 fzf() {
 	### Lazy loads fzf and installs it if not present
 	__load_fzf
-	fzf
+	fzf "$@"
 }
 zi() {
 	__load_fzf
