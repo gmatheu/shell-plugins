@@ -2,16 +2,19 @@
 
 # Lazy load nvm and rvm
 export NVM_DIR="$HOME/.nvm"
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-# then
-#   function nvm(){
-#     echo "Lazy loading nvm..."
-#     nvm
-#     source "$NVM_DIR/nvm.sh"
-#   }
-  #Spaceship theme requires node, that's why we need to load NVM eagerly
-  source "$NVM_DIR/nvm.sh"
+if [ -s "$NVM_DIR/nvm.sh" ]
+then
+  function nvm(){
+    echo "Lazy loading nvm..."
+    unset -f nvm
+    # shellcheck source=~/.nvm/nvm.sh
+    source "$NVM_DIR/nvm.sh"
+    # shellcheck source=~/.nvm/bash_completion
   . "$NVM_DIR/bash_completion"
+    nvm
+  }
+  #Spaceship theme requires node, that's why we need to load NVM eagerly
+  # source "$NVM_DIR/nvm.sh"
 else
   function install-nvm() {
     echo "Installing nvm"
