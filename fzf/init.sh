@@ -48,9 +48,12 @@ edit-fzf() {
 grep-fzf() {
 	### Search content, fuzzy search and opens selected file with default editor
 	selected=$(rg -L --color=never --no-heading --with-filename --line-number --column --smart-case . | fzf)
+	ret=$?
 	filename=$(echo $selected | cut -d : -f 1)
-	print -s "$EDITOR ${filename}"
-	$EDITOR ${filename}
+	[ ${ret} -eq 0 ] && {
+		print -s "$EDITOR ${filename}"
+		$EDITOR ${filename}
+	}
 }
 open-fzf() {
 	### Open files with default app selected file
