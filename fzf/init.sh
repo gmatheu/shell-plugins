@@ -42,6 +42,7 @@ edit-fzf() {
 	ret=$?
 	[ ${ret} -eq 0 ] && {
 		print -s "$EDITOR ${selected}"
+		where atuin 1>/dev/null 2>&1 && atuin history start "$EDITOR ${selected}"
 		$EDITOR "${selected}"
 	}
 }
@@ -52,6 +53,7 @@ grep-fzf() {
 	filename=$(echo $selected | cut -d : -f 1)
 	[ ${ret} -eq 0 ] && {
 		print -s "$EDITOR ${filename}"
+		where atuin 1>/dev/null 2>&1 && atuin history start "$EDITOR ${selected}"
 		$EDITOR ${filename}
 	}
 }
