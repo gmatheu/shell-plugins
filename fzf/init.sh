@@ -14,14 +14,17 @@ __load_fzf() {
 		git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf &&
 		$HOME/.fzf/install --no-update-rc
 	[ -f ~/.fzf.zsh ] &&
-		source ~/.fzf.zsh &&
-		[[ $- == *i* ]] && source "${HOME}/.fzf/shell/completion.zsh" 2>/dev/null &&
-		source "${HOME}/.fzf/shell/key-bindings.zsh"
+		source ~/.fzf.zsh
+	# [[ $- == *i* ]] && source "${HOME}/.fzf/shell/completion.zsh" 2>/dev/null &&
+	# source "${HOME}/.fzf/shell/key-bindings.zsh"
 }
 
 fzf() {
-	### Lazy loads fzf and installs it if not present
+	### Lazy loads fzf and installs it if not present.
+	### Keeps ctrl-r bindkey to what it was before
+	prev_ctrl_bind=$(bindkey "^R" | cut -d ' ' -f 2)
 	__load_fzf
+	bindkey "^R" "${prev_ctrl_bind}"
 	fzf "$@"
 }
 zi() {
