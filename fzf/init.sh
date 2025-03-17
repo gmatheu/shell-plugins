@@ -27,8 +27,13 @@ fzf() {
 	bindkey "^R" "${prev_ctrl_bind}"
 	fzf "$@"
 }
+
+unset z
+unset zi
 zi() {
+	prev_ctrl_bind=$(bindkey "^R" | cut -d ' ' -f 2)
 	__load_fzf
+	bindkey "^R" "${prev_ctrl_bind}"
 	__zoxide_zi "$@"
 }
 cli-launcher() {
@@ -89,6 +94,7 @@ cd-z() {
 	builtin cd ${directory}
 }
 
+alias z=zi
 alias zo=open-fzf
 alias zd=open-dir-fzf
 alias zz=cd-z
