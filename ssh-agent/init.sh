@@ -22,7 +22,18 @@ ssh_agent_activate_current() {
   echo "Activating ${alias} ssh-agent: $SSH_AGENT_PID"
   source $SSH_AGENT_MUTEX.${alias}
 
-  ssh_agent_list_identities
+  ssh-add -l >/dev/null 2>&1
+  ret=$?
+  if [ $ret -ne 2 ]; then
+    ssh_agent_list_identities
+  else
+    echo "Agent not loaded"
+    ssh_agent_create "${alias}"
+  fi
+}
+ssh_agent_activate_interactive() {
+  # ssh_agent_list | gum choose | xargs -o -I {} ssh_agent_activate_current {}
+  ssh_agent_activate_current $(ssh_agent_list | fzf)
 }
 
 ssh_agent_list() {
@@ -60,6 +71,7 @@ ssh_agent_add_identity() {
 
 alias ssh-agent-create=ssh_agent_create
 alias sac=ssh_agent_activate_current
+alias saci=ssh_agent_activate_interactive
 alias sal=ssh_agent_list_identities
 alias saa=ssh_agent_add_identity
 alias sas=ssh_agent_add_identities
